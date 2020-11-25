@@ -1,0 +1,17 @@
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1beta1
+kind: Kustomization
+metadata:
+  name: astrid-framework-backend
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: astrid-framework-common
+  interval: 2m0s
+  path: ./k8s/backend
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: astrid-framework
+  validation: client
+
